@@ -58,6 +58,18 @@ p{
     border: none;
     transition: 0.3s;
 }
+.btn-white{
+        background-color:white;
+    color: black;
+    border: none;
+    transition: 0.3s;
+}
+.btn-white:hover{
+        background-color: black;
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
 .btn-purple:hover {
     background-color: rgb(180, 80, 200); /* Màu tím đậm hơn chút */
     color: rgb(223, 104, 236);
@@ -68,8 +80,92 @@ p{
     transition: 0.3s;
 }
 .btn-outline-light:hover {
-    color: rgb(206, 118, 228); /* Chữ chuyển thành màu tím */
+    color: rgb(203, 109, 226); /* Chữ chuyển thành màu tím */
     background-color: white;
     border-color: white;
     transform: scale(1.05);
 }
+
+body {
+    background-color: #121212;
+    color: white;
+    background: linear-gradient(to bottom, #121212, #000000);
+}
+
+/* Style cho từng thẻ nhạc */
+.music-card {
+    
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.music-card:hover {
+    background-color: rgb(241, 124, 194);
+}
+
+
+
+.music-card:hover .btn-play {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-play:hover {
+    transform: scale(1.05) !important;
+    background-color: pink;
+}
+
+/* Đảm bảo chữ không bị tràn */
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* Màu nền tối sâu cho Footer */
+.custom-footer {
+    background-color: #121212;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Đường kẻ ngang mờ */
+.footer-divider {
+    border-top: 1px solid #292929;
+    opacity: 1;
+}
+
+/* Định dạng các liên kết */
+.custom-footer ul li {
+    margin-bottom: 12px; /* Khoảng cách giữa các dòng */
+}
+
+.custom-footer ul li a {
+    color: #b3b3b3; /* Màu xám đặc trưng của Spotify */
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+/* Hiệu ứng khi di chuột qua liên kết */
+.custom-footer ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Chữ bản quyền */
+.copyright-text {
+    margin-top: 40px;
+    color: #a7a7a7 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
