@@ -1,10 +1,75 @@
-.navbar-logo {
-width: 400px;
-height: auto;
-margin-left: 80px ;
-margin-top: 15px;
-}
-body{
+
+body {
     /* Mau chu dao */
     background-color: #121212;
+}
+
+
+
+.carousel-caption {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    
+    /* 2. Tạo hiệu ứng chuyển màu (Gradient) */
+    /* Ý nghĩa: Đi từ dưới lên (to top), bắt đầu là đen đậm (0.9), kết thúc là trong suốt (0) */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    
+    /* 3. Canh chỉnh vị trí chữ cho đẹp */
+    padding-bottom: 20px; /* Đẩy chữ lên cao khỏi mép dưới một chút */
+    padding-top: 400px;   /* Khoảng trống phía trên để màu đen loang dần ra êm hơn */
+    
+    border-radius: 0; 
+}
+.hero-img {
+    
+    height: 500px;
+    /* Chieu cao */
+    object-fit: cover;
+    /* Giữ ảnh không bị méo */
+
+}
+h5{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: rgb(206, 118, 228);
+}
+/* Tăng độ bo góc (vì mặc định Bootstrap bo hơi ít) */
+.custom-rounded {
+    border-radius: 24px;
+}
+p{
+    font-size: 100px;
+}
+
+.title{
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace ;
+    color:rgb(209, 133, 228);
+    font-weight: 800;
+}
+
+
+/* Style riêng cho nút Đăng ký màu tím */
+.btn-purple {
+    background-color: rgb(206, 118, 228);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+.btn-purple:hover {
+    background-color: rgb(180, 80, 200); /* Màu tím đậm hơn chút */
+    color: rgb(223, 104, 236);
+    transform: scale(1.05); /* Phóng to nhẹ */
+}
+.btn-outline-light{
+    background-color: #121212;
+    transition: 0.3s;
+}
+.btn-outline-light:hover {
+    color: rgb(206, 118, 228); /* Chữ chuyển thành màu tím */
+    background-color: white;
+    border-color: white;
+    transform: scale(1.05);
 }
