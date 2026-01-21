@@ -2,10 +2,14 @@
 body {
     /* Mau chu dao */
     background-color: #121212;
+    
 }
 
 
+/* Placeholder cua thanh tim kiem */
+.search-input::-moz-placeholder { color: #b3b3b3; }
 
+/* Vet den */
 .carousel-caption {
     left: 0 !important;
     right: 0 !important;
@@ -22,6 +26,7 @@ body {
     
     border-radius: 0; 
 }
+
 .hero-img {
     
     height: 500px;
@@ -85,7 +90,6 @@ p{
     border-color: white;
     transform: scale(1.05);
 }
-
 body {
     background-color: #121212;
     color: white;
@@ -93,28 +97,140 @@ body {
 }
 
 /* Style cho từng thẻ nhạc */
+/* Container chính của card */
 .music-card {
-    
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+
+    transition: transform 0.3s ease; /* Thêm hiệu ứng phóng to nhẹ nếu muốn */
     cursor: pointer;
+    overflow: hidden; /* Đảm bảo nội dung không tràn khỏi bo góc */
+    position: relative;
 }
 
+/* Hiệu ứng hover cho toàn bộ card */
 .music-card:hover {
-    background-color: rgb(241, 124, 194);
+    transform: translateY(-5px); /* Nhấc nhẹ card lên khi hover */
 }
 
+/* Lớp overlay chứa chữ */
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 15px;
+    
+    /* Tạo dải màu đen mờ từ dưới lên để dễ đọc chữ */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    
+    /* Mặc định là ẩn */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
-
-.music-card:hover .btn-play {
+/* Khi di chuột vào card, hiện overlay lên */
+.music-card:hover .card-overlay {
     opacity: 1;
-    transform: translateY(0);
+    visibility: visible;
 }
 
-.btn-play:hover {
-    transform: scale(1.05) !important;
-    background-color: pink;
+/* Đảm bảo hình ảnh luôn phủ kín */
+.music-card img {
+    transition: transform 0.5s ease;
 }
+
+/* Hiệu ứng zoom nhẹ hình ảnh khi hover */
+.music-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Card nghệ sĩ với phong cách giống card nhạc */
+/* Container chính của thẻ nghệ sĩ */
+.artist-card {
+    position: relative;
+    overflow: hidden; /* Quan trọng: cắt nội dung thừa theo bo góc */
+    cursor: pointer;
+    
+    /* THAY ĐỔI Ở ĐÂY: Đổi từ 8px thành 50% để tạo hình tròn */
+    border-radius: 50%; 
+    
+    transition: transform 0.3s ease;
+    /* Thêm shadow nhẹ để hình tròn nổi bật hơn trên nền tối */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+    /* Tăng shadow khi hover để tạo cảm giác nổi lên */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Ảnh nghệ sĩ - vuông và phủ kín */
+.artist-img {
+    width: 100%;
+    /* Đảm bảo thẻ luôn là hình vuông trước khi bị bo tròn */
+    aspect-ratio: 1/1; 
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Hiệu ứng zoom ảnh khi hover */
+.artist-card:hover .artist-img {
+    transform: scale(1.1); 
+}
+
+/* Overlay cho nghệ sĩ - Chỉ hiện khi hover */
+.artist-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Tăng padding lên một chút để chữ không bị sát mép cong của hình tròn */
+    padding: 25px 20px 20px 20px; 
+    
+    /* Dải đen mờ giúp chữ trắng nổi bật */
+    /* Điều chỉnh gradient một chút để nó trông mềm mại hơn trong hình tròn */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    text-align: center; /* Nên căn giữa chữ trong hình tròn sẽ đẹp hơn căn trái */
+}
+
+/* Hiện overlay khi hover */
+.artist-card:hover .artist-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Điều chỉnh lại chữ một chút cho phù hợp với căn giữa */
+.artist-overlay-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.artist-overlay-role {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+}
+.artist-overlay-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 0;
+}
+
+.artist-overlay-role {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+}
+
+
+
+
 
 /* Đảm bảo chữ không bị tràn */
 .text-truncate {
@@ -140,7 +256,7 @@ body {
 }
 
 .custom-footer ul li a {
-    color: #b3b3b3; /* Màu xám đặc trưng của Spotify */
+    color: #b3b3b3; 
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.2s ease;
@@ -159,6 +275,53 @@ body {
 }
 
 
+
+.rank-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+    background: rgba(185, 62, 199, 0.85); 
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+
+/* Container chứa các card để cuộn ngang */
+.scroll-container {
+    display: flex;
+    flex-wrap: nowrap; /* Không cho xuống dòng */
+    overflow-x: auto;  /* Cho phép cuộn ngang */
+    gap: 20px;         /* Khoảng cách giữa các card */
+    padding: 10px 5px 20px 5px; /* Thêm padding để không bị mất hiệu ứng hover */
+    scroll-behavior: smooth;
+}
+
+/* Ẩn thanh cuộn để giao diện sạch giống Spotify */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+.scroll-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Kích thước cố định cho mỗi card bài hát */
+.music-item {
+    flex: 0 0 auto;
+    width: 200px; /* Bạn có thể chỉnh to nhỏ tùy ý */
+}
+
+/* Kích thước cố định cho mỗi card nghệ sĩ */
+.artist-item {
+    flex: 0 0 auto;
+    width: 180px;
+}
 
 
 

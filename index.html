@@ -13,7 +13,7 @@
 
 <body>
 
-    
+
 
     <div class="container py-5" style="max-width: 1200px;">
         <div id="heroCarousel" class="carousel slide carousel-fade shadow custom-rounded overflow-hidden"
@@ -43,8 +43,9 @@
                     <img src="379873150-351593857526291-1695660238101903366-n.jpg" class="d-block w-100 hero-img"
                         alt="...">
                     <div class="carousel-caption d-none d-md-block">
-                        <span style="background-color: rgb(185, 62, 199);" class="badge fs-4 mb-3">Giảm giá 60% Hôm Nay!</span>
-                        <p class="fs-5">Kho âm nhạc tốt nhất.</p>
+                        <span style="background-color: rgb(185, 62, 199);" class="badge fs-4 mb-3">Giảm giá 60% Hôm
+                            Nay!</span>
+                        <p class="fs-4">Kho âm nhạc tốt nhất.</p>
                     </div>
                 </div>
 
@@ -52,7 +53,7 @@
                     <img src="https://picsum.photos/1200/600?random=9" class="d-block w-100 hero-img" alt="...">
                     <div class="carousel-caption d-none d-md-block">
 
-                        <p class="fs-5">Mạng xã hội giành cho âm nhạc.</p>
+                        <p class="fs-4">Mạng xã hội giành cho âm nhạc.</p>
                     </div>
                 </div>
 
@@ -61,7 +62,7 @@
                     <img src="https://picsum.photos/1200/600?random=3" class="d-block w-100 hero-img" alt="...">
                     <div class="carousel-caption d-none d-md-block">
 
-                        <p class="fs-5">Web nhạc tốt nhất.</p>
+                        <p class="fs-4">Web nhạc tốt nhất.</p>
                     </div>
                 </div>
 
@@ -69,103 +70,192 @@
                     <img src="https://picsum.photos/1200/600?random=2" class="d-block w-100 hero-img" alt="...">
                     <div class="carousel-caption d-none d-md-block">
 
-                        <p class="fs-5">Âm lượng tối đa.</p>
+                        <p class="fs-4">Âm lượng tối đa.</p>
                     </div>
                 </div>
 
             </div>
 
-
+            <!-- Hai nút điều hướng -->
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
-
         </div>
-        <!-- <div class="container text-center my-5">
-            <h1 class="title">Tìm tác phẩm của bạn: </h1>
-            <div>
-                <input style="border-color: #121212; max-width: 700px; background-color: rgb(91, 91, 91);" 
-                 type="" class=" form-control mx-auto shadow-none" id="find" placeholder="Tên tác phẩm, nghệ sĩ,...">
-            </div>
-        </div> -->
 
-        <div class="container mt-5">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="text-white">Dành cho bạn</h2>
-            </div>
 
-            <div id="music-list" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-4">
-            </div>
-        </div>
-    </div>
-
-    <footer class="custom-footer pt-5 pb-4">
-        <div class="container">
-            <hr class="footer-divider mb-5">
-
-            <div class="row">
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <h6 class="text-white fw-bold mb-3">Company</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">For the Record</a></li>
-                    </ul>
-                </div>
-
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <p class="copyright-text text-secondary small">© 2026 MyVelody AB</p>
+        <!-- Thanh tim kiem -->
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="search-box position-relative">
+                        <i
+                            class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                        <input type="text" id="searchInput"
+                            class="text-white bg-dark form-control search-input ps-5 py-3 shadow-none"
+                            placeholder="Bạn muốn nghe gì? (Tên bài hát, nghệ sĩ...)">
                     </div>
                 </div>
             </div>
-    </footer>
-
-    
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-    </script>
-    <script>
-        // 1. Danh sách dữ liệu bài hát (Bạn có thể thêm bao nhiêu tùy thích ở đây)
-        const songs = [
-            { title: "Making My Way", artist: "Sơn Tùng M-TP", img: "https://picsum.photos/300/300?random=1" },
-            { title: "Nấu Ăn Cho Em", artist: "Đen Vâu", img: "https://picsum.photos/300/300?random=2" },
-            { title: "Waiting For You", artist: "MONO", img: "https://picsum.photos/300/300?random=3" },
-            { title: "À Lôi", artist: "Double2T", img: "https://picsum.photos/300/300?random=4" },
-            { title: "Cắt Đôi Nỗi Sầu", artist: "Tăng Duy Tân", img: "https://picsum.photos/300/300?random=5" },
-            { title: "id 07201", artist: "W/n", img: "https://picsum.photos/300/300?random=6" },
-            { title: "Bật Tình Yêu Lên", artist: "Hòa Minzy", img: "https://picsum.photos/300/300?random=7" },
-            { title: "Nếu Lúc Đó", artist: "tlinh", img: "https://picsum.photos/300/300?random=8" },
-            { title: "Vũ Trụ Có Anh", artist: "Phương Mỹ Chi", img: "https://picsum.photos/300/300?random=9" },
-            { title: "Mưa Tháng Sáu", artist: "Văn Mai Hương", img: "https://picsum.photos/300/300?random=10" },
-        ];
-
-        const musicList = document.getElementById('music-list');
-
-        // 2. Vòng lặp để tạo HTML cho từng bài hát
-        songs.forEach(song => {
-// Thay đổi cấu trúc card trong vòng lặp forEach
-const songHTML = `
-<div class="col">
-    <div class="music-card p-0 overflow-hidden position-relative border-0">
-        <img src="${song.img}" class="img-fluid w-100" style="aspect-ratio: 1/1; object-fit: cover;" alt="${song.title}">
-        <div class="card-overlay position-absolute bottom-0 start-0 w-100 p-3" 
-             style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
-            <h6 class="text-white mb-0 fw-bold">${song.title}</h6>
-            <p class="text-light small mb-0 opacity-75">${song.artist}</p>
         </div>
-    </div>
-</div>
-`;
-            musicList.innerHTML += songHTML; // Thêm vào danh sách
-        });
-    </script>
+        <!--  -->
+        <div class="container mt-5">
+            <h2 class="text-white mb-4">Dành cho bạn</h2>
+            <div id="music-list" class="scroll-container"></div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white"><i class="bi bi-fire text-warning me-2"></i>Bảng xếp hạng Trending</h2>
+                <a href="#" class="text-secondary text-decoration-none small">Xem tất cả</a>
+            </div>
+            <div id="trending-list" class="scroll-container"></div>
+        </div>
+
+        <div class="container mt-5">
+            <h3 class="title mb-4">Nghệ sĩ phổ biến</h3>
+            <div id="artist-list" class="scroll-container"></div>
+        </div>
+
+        <!-- Credit -->
+        <footer class="custom-footer pt-5 pb-4">
+            <div class="container">
+                <hr class="footer-divider mb-5">
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <h6 class="text-white fw-bold mb-3">Nhóm 1: sản phẩm MyVelody</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <p class="copyright-text text-secondary small">© 2026 MyVelody</p>
+                        </div>
+                    </div>
+                </div>
+        </footer>
+
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+        </script>
+
+        <script>
+
+
+            //
+
+            
+//
+
+            const songs = [
+                { title: "Making My Way", artist: "Sơn Tùng M-TP", img: "https://picsum.photos/300/300?random=1" },
+                { title: "Nấu Ăn Cho Em", artist: "Đen Vâu", img: "https://picsum.photos/300/300?random=2" },
+                { title: "Waiting For You", artist: "MONO", img: "https://picsum.photos/300/300?random=3" },
+                { title: "À Lôi", artist: "Double2T", img: "https://picsum.photos/300/300?random=4" },
+                { title: "Cắt Đôi Nỗi Sầu", artist: "Tăng Duy Tân", img: "https://picsum.photos/300/300?random=5" },
+                { title: "id 07201", artist: "W/n", img: "https://picsum.photos/300/300?random=6" },
+                { title: "Bật Tình Yêu Lên", artist: "Hòa Minzy", img: "https://picsum.photos/300/300?random=7" },
+                { title: "Nếu Lúc Đó", artist: "tlinh", img: "https://picsum.photos/300/300?random=8" },
+                { title: "Vũ Trụ Có Anh", artist: "Phương Mỹ Chi", img: "https://picsum.photos/300/300?random=9" },
+                { title: "Mưa Tháng Sáu", artist: "Văn Mai Hương", img: "https://picsum.photos/300/300?random=10" },
+                { title: "Hit Me Up", artist: "Binz", img: "https://picsum.photos/300/300?random=26" },
+                { title: "Ngủ Một Mình", artist: "HIEUTHUHAI", img: "https://picsum.photos/300/300?random=27" },
+                { title: "Ưng Quá Chừng", artist: "AMEE", img: "https://picsum.photos/300/300?random=28" },
+                { title: "Đưa Em Về Nhà", artist: "GREY D", img: "https://picsum.photos/300/300?random=29" },
+                { title: "Từng Quen", artist: "Wren Evans", img: "https://picsum.photos/300/300?random=30" },
+                { title: "Ngày Mai Người Ta Lấy Chồng", artist: "Anh Tú", img: "https://picsum.photos/300/300?random=31" },
+                { title: "Em Xinh", artist: "MONO", img: "https://picsum.photos/300/300?random=32" },
+                { title: "Dâu Thiên Hạ", artist: "Suboi", img: "https://picsum.photos/300/300?random=33" }
+            ];
+
+            const trendingSongs = [
+                { title: "Hào Quang", artist: "Anh Trai Say Hi", img: "https://picsum.photos/300/300?random=11" },
+                { title: "Đừng Làm Nó Phức Tạp", artist: "tlinh", img: "https://picsum.photos/300/300?random=12" },
+                { title: "Exit Sign", artist: "HIEUTHUHAI", img: "https://picsum.photos/300/300?random=13" },
+                { title: "Thiên Lý Ơi", artist: "Jack - J97", img: "https://picsum.photos/300/300?random=14" },
+                { title: "Sau Lời Từ Khước", artist: "Phan Mạnh Quỳnh", img: "https://picsum.photos/300/300?random=15" },
+                { title: "Kim Phút Kim Giờ", artist: "Anh Trai Vượt Ngàn Chông Gai", img: "https://picsum.photos/300/300?random=34" },
+                { title: "Hút Pin", artist: "Anh Trai Say Hi", img: "https://picsum.photos/300/300?random=35" },
+                { title: "Lối Nhỏ", artist: "Đen Vâu", img: "https://picsum.photos/300/300?random=36" },
+                { title: "Vì Anh Đâu Biết", artist: "Madihu ft. Vũ", img: "https://picsum.photos/300/300?random=37" },
+                { title: "ThichThich", artist: "Phương Ly", img: "https://picsum.photos/300/300?random=38" }
+            ];
+
+            const artists = [
+                { name: "Sơn Tùng M-TP", img: "https://picsum.photos/300/300?random=21" },
+                { name: "Đen Vâu", img: "https://picsum.photos/300/300?random=22" },
+                { name: "tlinh", img: "https://picsum.photos/300/300?random=23" },
+                { name: "HIEUTHUHAI", img: "https://picsum.photos/300/300?random=24" },
+                { name: "MONO", img: "https://picsum.photos/300/300?random=25" },
+                { name: "Mỹ Tâm", img: "https://picsum.photos/300/300?random=39" },
+                { name: "Hà Anh Tuấn", img: "https://picsum.photos/300/300?random=40" },
+                { name: "Soobin", img: "https://picsum.photos/300/300?random=41" },
+                { name: "Binz", img: "https://picsum.photos/300/300?random=42" },
+                { name: "Wren Evans", img: "https://picsum.photos/300/300?random=43" },
+                { name: "MCK", img: "https://picsum.photos/300/300?random=44" },
+                { name: "Grey D", img: "https://picsum.photos/300/300?random=45" },
+                { name: "Hoàng Thùy Linh", img: "https://picsum.photos/300/300?random=46" },
+                { name: "Karik", img: "https://picsum.photos/300/300?random=47" },
+                { name: "Bích Phương", img: "https://picsum.photos/300/300?random=48" }
+            ];
+            // Hàm render cho Nhạc và Trending
+            const renderMusicSection = (data, containerId, isTrending = false) => {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.innerHTML = "";
+
+                data.forEach((song, index) => {
+                    const songHTML = `
+        <div class="music-item"> <div class="music-card p-0 overflow-hidden position-relative border-0 h-100 shadow-sm">
+                ${isTrending ? `<div class="rank-badge">#${index + 1}</div>` : ''}
+                
+                <img src="${song.img}" class="img-fluid w-100" alt="${song.title}">
+                
+                <div class="card-overlay position-absolute bottom-0 start-0 w-100 p-3">
+                    <h6 class="text-white mb-0 fw-bold text-truncate">${song.title}</h6>
+                    <p class="text-light small mb-0 opacity-75 text-truncate">${song.artist}</p>
+                </div>
+            </div>
+        </div>`;
+                    container.innerHTML += songHTML;
+                });
+            };
+
+            // Hàm render cho Nghệ sĩ
+            const renderArtistSection = (data, containerId) => {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                container.innerHTML = "";
+
+                data.forEach(artist => {
+                    const artistHTML = `
+        <div class="artist-item"> <div class="artist-card border-0 shadow-sm">
+                <img src="${artist.img}" class="artist-img" alt="${artist.name}">
+                
+                <div class="artist-overlay">
+                    <h6 class="artist-overlay-name text-truncate">${artist.name}</h6>
+                    <p class="artist-overlay-role mb-0">Nghệ sĩ</p>
+                </div>
+            </div>
+        </div>`;
+                    container.innerHTML += artistHTML;
+                });
+            };
+
+            // Gọi hàm hiển thị như cũ
+            renderArtistSection(artists, 'artist-list');
+            renderMusicSection(songs, 'music-list');
+            renderMusicSection(trendingSongs, 'trending-list', true);
+        </script>
 
 </body>
 
