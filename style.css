@@ -1,334 +1,469 @@
+/* -----------------------------------------------------------
+   1. KHAI BÁO BIẾN DÙNG CHUNG (DỄ DÀNG ĐỔI MÀU SAU NÀY)
+----------------------------------------------------------- */
+:root {
+    /* Mã màu tím chủ đạo thống nhất (Lấy từ màu badge giảm giá của bạn) */
+    --brand-purple: #B93EC7; 
+    --brand-purple-hover: #9d35a8; /* Màu tím đậm hơn khi hover */
+    --bg-dark: #121212;            /* Màu nền đen Spotify */
+    --text-gray: #b3b3b3;          /* Màu chữ phụ */
+    --font-main: 'Poppins', sans-serif; /* Phông chữ thống nhất */
+}
 
+
+/* Thêm vào file style.css */
+.tracking-wide {
+    letter-spacing: 3px; /* Giãn khoảng cách chữ cái tạo cảm giác sang trọng */
+    font-size: 0.85rem;
+}
+
+/* Feature Carousel Styles */
+.backdrop-blur {
+    backdrop-filter: blur(5px); /* Làm mờ nền sau nút mũi tên */
+}
+
+/* Tinh chỉnh Typography cho slide tính năng */
+.carousel-caption h2 {
+    letter-spacing: -1px; /* Kéo chữ xích lại gần nhau một chút cho chặt chẽ */
+}
+
+/* Hiệu ứng Icon lớn mờ ảo */
+.carousel-item i {
+    transition: transform 6s ease; /* Chuyển động cực chậm */
+}
+
+/* Khi slide active thì icon sẽ phóng to nhẹ từ từ (Ken Burns effect) */
+.carousel-item.active i {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* -----------------------------------------------------------
+   2. CẤU HÌNH CƠ BẢN (BODY & TYPOGRAPHY)
+----------------------------------------------------------- */
 body {
-    /* Mau chu dao */
-    background-color: #121212;
-    
+    background-color: var(--bg-dark);
+    color: white;
+    /* Gradient nền nhẹ cho có chiều sâu */
+    background: linear-gradient(to bottom, #121212, #000000);
+    font-family: var(--font-main); /* Áp dụng Poppins cho toàn trang */
 }
 
-
-/* Placeholder cua thanh tim kiem */
-.search-input::-moz-placeholder { color: #b3b3b3; }
-
-/* Vet den */
-.carousel-caption {
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    
-    /* 2. Tạo hiệu ứng chuyển màu (Gradient) */
-    /* Ý nghĩa: Đi từ dưới lên (to top), bắt đầu là đen đậm (0.9), kết thúc là trong suốt (0) */
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-    
-    /* 3. Canh chỉnh vị trí chữ cho đẹp */
-    padding-bottom: 20px; /* Đẩy chữ lên cao khỏi mép dưới một chút */
-    padding-top: 400px;   /* Khoảng trống phía trên để màu đen loang dần ra êm hơn */
-    
-    border-radius: 0; 
+/* Loại bỏ Courier New, dùng font đậm của Poppins cho tiêu đề */
+h1, h2, h3, h4, h5, h6, .title {
+    font-family: var(--font-main);
+    font-weight: 700; /* In đậm mạnh mẽ */
+    color: white;     /* Mặc định tiêu đề màu trắng cho sang trọng */
 }
 
-.hero-img {
-    
-    height: 500px;
-    /* Chieu cao */
-    object-fit: cover;
-    /* Giữ ảnh không bị méo */
+/* -----------------------------------------------------------
+   3. CÁC THÀNH PHẦN BUTTON & LIÊN KẾT
+----------------------------------------------------------- */
+/* Nút màu tím chủ đạo */
+.btn-purple, .btn-purple-fe {
+    background-color: var(--brand-purple);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
 
+.btn-purple:hover, .btn-purple-fe:hover {
+    background-color: var(--brand-purple-hover);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(185, 62, 199, 0.4); /* Hiệu ứng phát sáng nhẹ */
 }
-h5{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 30px;
-    color: rgb(206, 118, 228);
+
+/* Nút trắng */
+.btn-white {
+    background-color: white;
+    color: black;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
 }
-/* Tăng độ bo góc (vì mặc định Bootstrap bo hơi ít) */
+
+.btn-white:hover {
+    background-color: #e6e6e6; /* Xám rất nhạt */
+    transform: scale(1.05);
+}
+
+/* Nút Outline (Viền) */
+.btn-outline-light {
+    border: 2px solid rgba(255,255,255,0.2); /* Viền mờ tinh tế hơn */
+    color: white;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    border-color: var(--brand-purple);
+    color: var(--brand-purple);
+    background: rgba(185, 62, 199, 0.1); /* Nền tím mờ 10% */
+}
+
+/* Link trên Navbar */
+.stext-link {
+    color: var(--text-gray) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.stext-link:hover {
+    color: white !important;
+    transform: scale(1.02);
+}
+
+/* -----------------------------------------------------------
+   4. HERO CAROUSEL & HEADER
+----------------------------------------------------------- */
 .custom-rounded {
     border-radius: 24px;
 }
-p{
-    font-size: 100px;
+
+.hero-img {
+    height: 500px;
+    object-fit: cover;
 }
 
-.title{
-    font-size: 30px;
-    font-family: 'Courier New', Courier, monospace ;
-    color:rgb(209, 133, 228);
-    font-weight: 800;
+.carousel-caption {
+    left: 0 !important; right: 0 !important; bottom: 0 !important;
+    width: 100% !important;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    padding-bottom: 40px;
+    padding-top: 200px;
 }
 
-
-/* Style riêng cho nút Đăng ký màu tím */
-.btn-purple {
-    background-color: rgb(206, 118, 228);
-    color: white;
-    border: none;
-    transition: 0.3s;
-}
-.btn-white{
-        background-color:white;
-    color: black;
-    border: none;
-    transition: 0.3s;
-}
-.btn-white:hover{
-        background-color: black;
-    color: white;
-    border: none;
-    transition: 0.3s;
-}
-.btn-purple:hover {
-    background-color: rgb(180, 80, 200); /* Màu tím đậm hơn chút */
-    color: rgb(223, 104, 236);
-    transform: scale(1.05); /* Phóng to nhẹ */
-}
-.btn-outline-light{
-    background-color: #121212;
-    transition: 0.3s;
-}
-.btn-outline-light:hover {
-    color: rgb(203, 109, 226); /* Chữ chuyển thành màu tím */
-    background-color: white;
-    border-color: white;
-    transform: scale(1.05);
-}
-body {
-    background-color: #121212;
-    color: white;
-    background: linear-gradient(to bottom, #121212, #000000);
+/* Badge giảm giá */
+.badge {
+    background-color: var(--brand-purple) !important; /* Dùng biến màu */
+    font-weight: 600;
 }
 
-/* Style cho từng thẻ nhạc */
-/* Container chính của card */
+/* -----------------------------------------------------------
+   5. NAVBAR STICKY & SEARCH
+----------------------------------------------------------- */
+.search-input {
+    background-color: #2a2a2a !important; /* Nền xám đậm cho input */
+    color: white !important;
+    border-radius: 50px; /* Bo tròn hoàn toàn */
+}
+.search-input::placeholder { color: var(--text-gray); }
+
+#main-nav.sticky {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    border-bottom: 1px solid #333;
+    animation: slideDown 0.3s ease forwards;
+    padding: 10px 0;
+}
+
+.nav-elements-hidden {
+    display: none; opacity: 0; width: 0; overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#main-nav.sticky .nav-elements-hidden {
+    display: block; opacity: 1; width: auto;
+}
+#main-nav.sticky #search-col { flex: 1; max-width: none; }
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+/* -----------------------------------------------------------
+   6. MUSIC CARDS & ARTIST (GIAO DIỆN CHÍNH)
+----------------------------------------------------------- */
+.scroll-container {
+    display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 20px;
+    padding: 10px 5px 20px 5px;
+    scrollbar-width: none; /* Firefox */
+}
+.scroll-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+.music-item { flex: 0 0 auto; width: 200px; }
+.artist-item { flex: 0 0 auto; width: 180px; }
+
+/* Music Card Style */
 .music-card {
-
-    transition: transform 0.3s ease; /* Thêm hiệu ứng phóng to nhẹ nếu muốn */
-    cursor: pointer;
-    overflow: hidden; /* Đảm bảo nội dung không tràn khỏi bo góc */
-    position: relative;
-}
-
-/* Hiệu ứng hover cho toàn bộ card */
-.music-card:hover {
-    transform: translateY(-5px); /* Nhấc nhẹ card lên khi hover */
-}
-
-/* Lớp overlay chứa chữ */
-.card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 15px;
-    
-    /* Tạo dải màu đen mờ từ dưới lên để dễ đọc chữ */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
-    
-    /* Mặc định là ẩn */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* Khi di chuột vào card, hiện overlay lên */
-.music-card:hover .card-overlay {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Đảm bảo hình ảnh luôn phủ kín */
-.music-card img {
-    transition: transform 0.5s ease;
-}
-
-/* Hiệu ứng zoom nhẹ hình ảnh khi hover */
-.music-card:hover img {
-    transform: scale(1.1);
-}
-
-/* Card nghệ sĩ với phong cách giống card nhạc */
-/* Container chính của thẻ nghệ sĩ */
-.artist-card {
-    position: relative;
-    overflow: hidden; /* Quan trọng: cắt nội dung thừa theo bo góc */
-    cursor: pointer;
-    
-    /* THAY ĐỔI Ở ĐÂY: Đổi từ 8px thành 50% để tạo hình tròn */
-    border-radius: 50%; 
-    
+    border-radius: 8px; /* Bo góc nhẹ chuẩn Spotify */
     transition: transform 0.3s ease;
-    /* Thêm shadow nhẹ để hình tròn nổi bật hơn trên nền tối */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    background-color: #181818; /* Nền card khi chưa có ảnh */
+}
+
+.music-card:hover { transform: translateY(-8px); }
+
+.card-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    opacity: 0; transition: opacity 0.3s ease;
+}
+
+.music-card:hover .card-overlay { opacity: 1; }
+.music-card:hover img { transform: scale(1.05); }
+.music-card img { transition: transform 0.5s ease; border-radius: 8px; }
+
+/* Rank Badge (#1, #2...) */
+.rank-badge {
+    position: absolute; top: 10px; left: 10px; z-index: 10;
+    background: var(--brand-purple); /* Dùng biến màu */
+    color: white;
+    padding: 2px 12px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* Artist Card Style (Tròn) */
+.artist-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    border-radius: 50%; /* Tròn */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 3px solid transparent; /* Viền trong suốt để chuẩn bị cho hover */
+    transition: all 0.3s ease;
 }
 
 .artist-card:hover {
-    transform: translateY(-5px);
-    /* Tăng shadow khi hover để tạo cảm giác nổi lên */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    transform: scale(1.05);
+    border-color: var(--brand-purple); /* Hiện viền tím khi hover */
 }
 
-/* Ảnh nghệ sĩ - vuông và phủ kín */
-.artist-img {
-    width: 100%;
-    /* Đảm bảo thẻ luôn là hình vuông trước khi bị bo tròn */
-    aspect-ratio: 1/1; 
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+.artist-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+.artist-overlay { display: none; } /* Ẩn overlay chữ trong nghệ sĩ cho gọn */
 
-/* Hiệu ứng zoom ảnh khi hover */
-.artist-card:hover .artist-img {
-    transform: scale(1.1); 
-}
-
-/* Overlay cho nghệ sĩ - Chỉ hiện khi hover */
-.artist-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    /* Tăng padding lên một chút để chữ không bị sát mép cong của hình tròn */
-    padding: 25px 20px 20px 20px; 
-    
-    /* Dải đen mờ giúp chữ trắng nổi bật */
-    /* Điều chỉnh gradient một chút để nó trông mềm mại hơn trong hình tròn */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
-    
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    text-align: center; /* Nên căn giữa chữ trong hình tròn sẽ đẹp hơn căn trái */
-}
-
-/* Hiện overlay khi hover */
-.artist-card:hover .artist-overlay {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Điều chỉnh lại chữ một chút cho phù hợp với căn giữa */
-.artist-overlay-name {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: white;
-    margin-bottom: 2px;
-}
-
-.artist-overlay-role {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.85rem;
-}
-.artist-overlay-name {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: white;
-    margin-bottom: 0;
-}
-
-.artist-overlay-role {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.85rem;
-}
-
-
-
-
-
-/* Đảm bảo chữ không bị tràn */
-.text-truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-/* Màu nền tối sâu cho Footer */
+/* -----------------------------------------------------------
+   7. FOOTER & TEXT UTILS
+----------------------------------------------------------- */
 .custom-footer {
-    background-color: #121212;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000000; /* Đen tuyền cho chân trang */
+    border-top: 1px solid #333;
+}
+.footer-link {
+    color: var(--text-gray); text-decoration: none; transition: 0.2s;
+}
+.footer-link:hover { color: var(--brand-purple); } /* Hover chuyển tím */
+
+.text-truncate {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
-/* Đường kẻ ngang mờ */
-.footer-divider {
-    border-top: 1px solid #292929;
-    opacity: 1;
+/* -----------------------------------------------------------
+   8. PRICING & TABLE STYLE (NEW)
+----------------------------------------------------------- */
+
+/* Card cơ bản */
+.pricing-card-std, .pricing-card-gold {
+    background-color: #181818;
+    transition: transform 0.3s ease;
+}
+.pricing-card-std:hover, .pricing-card-gold:hover {
+    transform: translateY(-5px);
 }
 
-/* Định dạng các liên kết */
-.custom-footer ul li {
-    margin-bottom: 12px; /* Khoảng cách giữa các dòng */
+/* Card Plus (Nổi bật - Màu tím) */
+.pricing-card-plus {
+    background: linear-gradient(180deg, rgba(185, 62, 199, 0.15) 0%, #181818 100%);
+    border: 2px solid var(--brand-purple); /* Viền tím */
+    transition: transform 0.3s ease;
+}
+.pricing-card-plus:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 40px rgba(185, 62, 199, 0.3) !important;
 }
 
-.custom-footer ul li a {
-    color: #b3b3b3; 
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
+/* Các tiện ích chữ màu */
+.text-brand { color: var(--brand-purple) !important; }
+.bg-purple { background-color: var(--brand-purple) !important; }
+
+/* Bảng so sánh hiện đại */
+.modern-table-container {
+    background-color: #181818;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* Hiệu ứng khi di chuột qua liên kết */
-.custom-footer ul li a:hover {
-    color: #ffffff;
-    text-decoration: underline;
+.custom-table { --bs-table-bg: transparent; margin-bottom: 0; }
+.custom-table tr { border-bottom: 1px solid #333; }
+.custom-table tbody tr:last-child { border-bottom: none; }
+.custom-table th, .custom-table td {
+    padding: 1.5rem 1rem;
+    border: none;
 }
 
-/* Chữ bản quyền */
-.copyright-text {
-    margin-top: 40px;
-    color: #a7a7a7 !important;
+/* Icon dấu gạch ngang mờ */
+.icon-dash-muted { color: #333; font-size: 1.5rem; }
+
+/* Hiệu ứng phát sáng màu tím */
+.glow-purple {
+    text-shadow: 0 0 15px rgba(185, 62, 199, 0.6);
 }
 
+/* Hiệu ứng phát sáng màu gold */
+.glow-gold {
+    text-shadow: 0 0 15px rgba(255, 193, 7, 0.8); /* Màu vàng sáng rực */
+}
+/* Accordion (FAQ) */
+.accordion-button:not(.collapsed) {
+    color: var(--brand-purple);
+    box-shadow: none;
+}
+.accordion-button::after {
+    filter: invert(1); /* Đổi màu mũi tên sang trắng */
+}
 
+/* -----------------------------------------------------------
+   9. HERO BUTTONS (NÚT TRÊN BANNER)
+----------------------------------------------------------- */
 
-.rank-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 10;
-    background: rgba(185, 62, 199, 0.85); 
-    color: white;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-weight: bold;
+/* Cấu hình chung cho 3 nút trên Hero */
+.btn-hero-outline, .btn-hero-pink, .btn-hero-white {
+    border-width: 2px;       /* Viền dày 2px cho đẹp */
+    border-style: solid;
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt */
+    backdrop-filter: blur(4px); /* Làm mờ nền ảnh phía sau nút (Glass effect) */
+    text-transform: uppercase; /* Chữ in hoa cho sang trọng (tuỳ chọn) */
     font-size: 0.9rem;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.2); 
+    letter-spacing: 0.5px;
 }
 
+/* 1. Nút Đăng nhập (Outline) */
+.btn-hero-outline {
+    border-color: rgba(255, 255, 255, 0.6); /* Viền trắng mờ */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);   /* Nền đen mờ nhẹ */
+}
+.btn-hero-outline:hover {
+    border-color: var(--brand-purple);      /* Hover: Viền chuyển Hồng/Tím */
+    background-color: var(--brand-purple);  /* Hover: Nền chuyển Hồng/Tím */
+    color: white;
+    transform: translateY(-2px);
+}
 
-/* Container chứa các card để cuộn ngang */
-.scroll-container {
+/* 2. Nút Đăng ký (Màu Hồng/Tím chủ đạo) */
+.btn-hero-pink {
+    border-color: var(--brand-purple);
+    background-color: var(--brand-purple);
+    color: white;
+    box-shadow: 0 4px 15px rgba(185, 62, 199, 0.4); /* Phát sáng nhẹ */
+}
+.btn-hero-pink:hover {
+    background-color: transparent;     /* Hover: Mất nền, chỉ còn viền */
+    border-color: #ff6bce;             /* Hover: Viền chuyển sang màu hồng sáng hơn */
+    color: #ff6bce;                    /* Chữ màu hồng sáng */
+    box-shadow: 0 0 20px rgba(255, 107, 206, 0.6); /* Phát sáng mạnh hơn */
+}
+
+/* 3. Nút Đăng nhạc (Màu Trắng) */
+.btn-hero-white {
+    border-color: white;
+    background-color: white;
+    color: #121212; /* Chữ đen */
+}
+.btn-hero-white:hover {
+    border-color: var(--brand-purple); /* Hover: Viền hồng */
+    color: var(--brand-purple);        /* Hover: Chữ hồng */
+    background-color: white;           /* Giữ nền trắng */
+    transform: scale(1.05);
+}
+
+/* -----------------------------------------------------------
+   10. AUTH PAGES (LOGIN & REGISTER)
+----------------------------------------------------------- */
+
+/* Container bao quanh để căn giữa màn hình */
+.auth-container {
+    min-height: 100vh;
     display: flex;
-    flex-wrap: nowrap; /* Không cho xuống dòng */
-    overflow-x: auto;  /* Cho phép cuộn ngang */
-    gap: 20px;         /* Khoảng cách giữa các card */
-    padding: 10px 5px 20px 5px; /* Thêm padding để không bị mất hiệu ứng hover */
-    scroll-behavior: smooth;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #2a1a30 0%, #121212 70%); /* Hiệu ứng tỏa sáng tím nhẹ ở giữa */
+    padding: 20px;
 }
 
-/* Ẩn thanh cuộn để giao diện sạch giống Spotify */
-.scroll-container::-webkit-scrollbar {
-    display: none;
-}
-.scroll-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* Kích thước cố định cho mỗi card bài hát */
-.music-item {
-    flex: 0 0 auto;
-    width: 200px; /* Bạn có thể chỉnh to nhỏ tùy ý */
+/* Thẻ Card chứa Form */
+.auth-card {
+    background-color: #181818;
+    width: 100%;
+    max-width: 450px; /* Độ rộng tối đa */
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid #333;
 }
 
-/* Kích thước cố định cho mỗi card nghệ sĩ */
-.artist-item {
-    flex: 0 0 auto;
-    width: 180px;
+/* Tùy chỉnh ô nhập liệu (Input) */
+.form-control-dark {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px; /* Bo tròn giống nút bấm */
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
 }
 
+.form-control-dark:focus {
+    background-color: #2a2a2a;
+    color: white;
+    border-color: var(--brand-purple); /* Viền tím khi nhập */
+    box-shadow: 0 0 0 4px rgba(185, 62, 199, 0.2); /* Shadow tím mờ */
+}
 
+/* Chỉnh màu Placeholder (chữ gợi ý) */
+.form-control-dark::placeholder {
+    color: #6c757d;
+}
 
+/* Label (Nhãn) */
+.form-label {
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
 
+/* Đường kẻ phân cách (Hoặc đăng nhập bằng...) */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #6c757d;
+    margin: 20px 0;
+}
+.auth-divider::before, .auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #333;
+}
+.auth-divider span {
+    padding: 0 10px;
+    font-size: 0.85rem;
+}
 
-
-
-
-
-
+/* Nút Social (Google/Facebook) */
+.btn-social {
+    background-color: transparent;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.btn-social:hover {
+    background-color: #333;
+    border-color: white;
+    color: white;
+}
