@@ -10,32 +10,112 @@
     --font-main: 'Poppins', sans-serif; /* Phông chữ thống nhất */
 }
 
-
+a{
+    text-decoration: none;
+}
 /* Thêm vào file style.css */
 .tracking-wide {
     letter-spacing: 3px; /* Giãn khoảng cách chữ cái tạo cảm giác sang trọng */
     font-size: 0.85rem;
 }
 
-/* Feature Carousel Styles */
-.backdrop-blur {
-    backdrop-filter: blur(5px); /* Làm mờ nền sau nút mũi tên */
+/* Làm tối ảnh nền để chữ nổi bật (Apple thường dùng brightness 40-60%) */
+.brightness-50 {
+    filter: brightness(0.5);
+    transition: transform 10s ease; /* Hiệu ứng zoom nhẹ từ từ */
 }
 
-/* Tinh chỉnh Typography cho slide tính năng */
-.carousel-caption h2 {
-    letter-spacing: -1px; /* Kéo chữ xích lại gần nhau một chút cho chặt chẽ */
+/* Hiệu ứng Ken Burns (Ảnh zoom từ từ khi đang hiển thị) */
+.carousel-item.active .brightness-50 {
+    transform: scale(1.1);
 }
 
-/* Hiệu ứng Icon lớn mờ ảo */
-.carousel-item i {
-    transition: transform 6s ease; /* Chuyển động cực chậm */
+/* Chữ tiêu đề khổng lồ kiểu Apple */
+.display-1 {
+    font-size: calc(3rem + 4vw); /* Co giãn theo màn hình */
+    letter-spacing: -2px;       /* Chữ xích lại gần nhau cho sang */
+    line-height: 1.1;
 }
 
-/* Khi slide active thì icon sẽ phóng to nhẹ từ từ (Ken Burns effect) */
-.carousel-item.active i {
-    transform: scale(1.1) rotate(5deg);
+/* Khoảng cách chữ cho tagline */
+.tracking-widest {
+    letter-spacing: 0.3em;
+    font-size: 0.9rem;
 }
+
+/* Lớp phủ Navbar mờ ảo (Glassmorphism) */
+.backdrop-blur-nav {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+
+/* -----------------------------------------------------------
+   APPLE-STYLE CAROUSEL CONTROLS (Nút chuyển hình nhỏ)
+----------------------------------------------------------- */
+
+/* Khung bao nút - thu hẹp diện tích click để tinh tế hơn */
+.custom-nav-btn {
+    width: 5% !important; /* Chỉ chiếm một dải nhỏ ở hai bên */
+    opacity: 0.1;           /* Mặc định ẩn đi */
+    transition: opacity 0.4s ease !important;
+}
+
+/* Hiện nút khi di chuột vào vùng Carousel */
+#heroCarousel:hover .custom-nav-btn {
+    opacity: 1;
+}
+
+/* Vòng tròn nhỏ chứa icon */
+.nav-circle {
+    width: 44px;         /* Kích thước tiêu chuẩn của Apple cho cảm ứng */
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1); /* Nền trắng siêu mờ */
+    backdrop-filter: blur(15px);          /* Hiệu ứng kính mờ */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi di chuột trực tiếp vào nút */
+.nav-circle:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Tinh chỉnh icon mũi tên mảnh hơn */
+.nav-circle i {
+    -webkit-text-stroke: 0.5px; /* Làm mảnh nét icon */
+}
+
+/* Nút trắng kiểu Apple */
+.btn-white {
+    background-color: white;
+    color: black;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-white:hover {
+    background-color: #f5f5f7;
+    transform: scale(1.05);
+}
+
+/* Ghi đè căn giữa mặc định của Bootstrap cho Carousel Caption */
+.carousel-caption {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 0;
+}
+
+
 
 /* -----------------------------------------------------------
    2. CẤU HÌNH CƠ BẢN (BODY & TYPOGRAPHY)
@@ -152,34 +232,53 @@ h1, h2, h3, h4, h5, h6, .title {
 }
 .search-input::placeholder { color: var(--text-gray); }
 
-#main-nav.sticky {
-    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-    background-color: rgba(18, 18, 18, 0.95);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-    border-bottom: 1px solid #333;
-    animation: slideDown 0.3s ease forwards;
-    padding: 10px 0;
-}
-
-.nav-elements-hidden {
-    display: none; opacity: 0; width: 0; overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-#main-nav.sticky .nav-elements-hidden {
-    display: block; opacity: 1; width: auto;
-}
-#main-nav.sticky #search-col { flex: 1; max-width: none; }
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
 /* -----------------------------------------------------------
    6. MUSIC CARDS & ARTIST (GIAO DIỆN CHÍNH)
 ----------------------------------------------------------- */
+.scroll-container {
+    display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 20px;
+    padding: 10px 5px 20px 5px;
+    scrollbar-width: none; /* Firefox */
+}
+.scroll-container::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+.music-item { flex: 0 0 auto; width: 200px; }
+.artist-item { flex: 0 0 auto; width: 180px; }
+
+/* Music Card Style */
+.music-card {
+    border-radius: 8px; /* Bo góc nhẹ chuẩn Spotify */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    background-color: #181818; /* Nền card khi chưa có ảnh */
+}
+
+.music-card:hover { transform: translateY(-8px); }
+
+.card-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    opacity: 0; transition: opacity 0.3s ease;
+}
+
+.music-card:hover .card-overlay { opacity: 1; }
+.music-card:hover img { transform: scale(1.05); }
+.music-card img { transition: transform 0.5s ease; border-radius: 8px; }
+
+/* Artist Card Style - Thừa hưởng hiệu ứng từ Music Card nhưng làm tròn */
+.artist-card {
+    border-radius: 50% !important; /* Biến thẻ thành hình tròn */
+    aspect-ratio: 1 / 1; /* Đảm bảo luôn là hình vuông trước khi bo tròn */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    background-color: #181818;
+    border: none;
+}
 .scroll-container {
     display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 20px;
     padding: 10px 5px 20px 5px;
@@ -224,24 +323,49 @@ h1, h2, h3, h4, h5, h6, .title {
     font-size: 0.9rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
-
-/* Artist Card Style (Tròn) */
-.artist-card {
-    position: relative; overflow: hidden; cursor: pointer;
-    border-radius: 50%; /* Tròn */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    border: 3px solid transparent; /* Viền trong suốt để chuẩn bị cho hover */
+/*  */
+/* Lớp phủ chứa tên nghệ sĩ - Chỉ hiện ở cạnh dưới */
+.artist-overlay { 
+    position: absolute;
+    bottom: 0; /* Đưa xuống sát đáy */
+    left: 0;
+    width: 100%;
+    height: 40%; /* Chiều cao chỉ chiếm khoảng 40% card */
+    
+    /* Hiệu ứng gradient từ trong suốt sang đen để chữ dễ đọc */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Căn chữ sát cạnh dưới */
+    align-items: center;
+    
+    opacity: 0; 
     transition: all 0.3s ease;
+    padding-bottom: 15px; /* Tạo khoảng cách giữa chữ và mép tròn */
+    text-align: center;
 }
 
-.artist-card:hover {
-    transform: scale(1.05);
-    border-color: var(--brand-purple); /* Hiện viền tím khi hover */
+/* Khi hover vào card thì hiện overlay và đẩy nhẹ chữ lên */
+.artist-card:hover .artist-overlay { 
+    opacity: 1; 
 }
 
-.artist-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
-.artist-overlay { display: none; } /* Ẩn overlay chữ trong nghệ sĩ cho gọn */
+.artist-overlay-name {
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin: 0;
+    padding: 0 10px; /* Tránh chữ chạm mép tròn */
+}
 
+.artist-overlay-role {
+    color: #ed41f9; /* Màu tím thương hiệu của bạn */
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 /* -----------------------------------------------------------
    7. FOOTER & TEXT UTILS
 ----------------------------------------------------------- */
@@ -466,4 +590,121 @@ h1, h2, h3, h4, h5, h6, .title {
     background-color: #333;
     border-color: white;
     color: white;
+}
+
+
+/* Sidebar Layout */
+.sidebar-left {
+    width: 280px;
+    background-color: #000000; /* Đen tuyền giống Spotify */
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1050;
+    transition: all 0.3s ease;
+}
+
+.main-content-wrapper {
+    background-color: #121212; /* Màu nền chính */
+    min-height: 100vh;
+}
+
+/* User Profile Section */
+.user-profile-section {
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.user-profile-section:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Nav Links */
+.sidebar-left .nav-link {
+    color: #b3b3b3 !important;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.sidebar-left .nav-link:hover, 
+.sidebar-left .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-left .nav-link i {
+    transition: 0.2s;
+}
+
+/* Brand Colors */
+.text-purple {
+    color: #b343e2 !important;
+}
+
+.btn-purple {
+    background: linear-gradient(45deg, #b343e2, #8a2be2);
+    border: none;
+    color: white;
+}
+
+
+
+
+
+.sidebar-left {
+    width: 280px;
+    min-width: 280px; /* Cố định độ rộng sidebar */
+    background-color: #000000;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+}
+
+.main-content-wrapper {
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+/* Sidebar links */
+.sidebar-left .nav-link {
+    color: #b3b3b3 !important;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.sidebar-left .nav-link:hover, 
+.sidebar-left .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Nút bấm của MyVelody */
+.btn-hero-outline {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-hero-outline:hover {
+    background: white;
+    color: black;
+}
+
+.text-purple { color: #b343e2 !important; }
+
+.btn-purple {
+    background: linear-gradient(45deg, #b343e2, #8a2be2);
+    border: none;
+    color: white;
+}
+
+.promo-box {
+    background: rgba(179, 67, 226, 0.1);
+    border: 1px solid rgba(179, 67, 226, 0.3);
+}
+
+/* Ẩn sidebar trên điện thoại */
+@media (max-width: 991px) {
+    .sidebar-left { display: none !important; }
 }
