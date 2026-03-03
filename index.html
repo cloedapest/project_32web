@@ -40,7 +40,6 @@
 
                 </div>
             </a>
-
             <nav class="nav flex-column gap-2 mb-4">
                 <a href="index.html" class="nav-link active d-flex align-items-center gap-3">
                     <i class="bi bi-house-door-fill fs-5"></i> <span>Trang chủ</span>
@@ -68,7 +67,8 @@
                 <a href="#" class="nav-link d-flex align-items-center gap-3 text-secondary">
                     <i class="bi bi-heart-fill fs-5 text-purple"></i> <span>Bài hát đã thích</span>
                 </a>
-                <a href="register.html" class="nav-link d-flex align-items-center gap-3 text-secondary">
+                <a href="#" class="nav-link d-flex align-items-center gap-3 text-secondary" data-bs-toggle="modal"
+                    data-bs-target="#uploadModal">
                     <i class="bi bi-cloud-arrow-up-fill fs-5"></i> <span>Đăng nhạc</span>
                 </a>
                 <a href="register.html" class="nav-link d-flex align-items-center gap-3 text-secondary">
@@ -320,6 +320,13 @@
 
 
                     <!--  -->
+                    <div class="container mt-4" id="my-music-container" style="display: none;">
+                        <h2 class="text-white mb-4"><i class="bi bi-person-lines-fill text-purple me-2"></i>Nhạc của tôi
+                        </h2>
+                        <div id="my-music-list" class="scroll-container">
+                        </div>
+                    </div>
+
                     <div class="container mt-5">
                         <h2 class="text-white mb-4">Dành cho bạn</h2>
                         <div id="music-list" class="scroll-container"></div>
@@ -421,7 +428,7 @@
                         //
 
                         const songs = [
-                            { title: "Making My Way", artist: "Sơn Tùng M-TP", img: "https://picsum.photos/300/300?random=1" },
+                            { title: "Making My Way", artist: "Sơn Tùng M-TP", img: "https://picsum.photos/300/300?random=1", url: "cloud_simula/SON TUNG M-TP - MAKING MY WAY - OFFICIAL VISUALIZER.mp3" },
                             { title: "Nấu Ăn Cho Em", artist: "Đen Vâu", img: "https://picsum.photos/300/300?random=2" },
                             { title: "Waiting For You", artist: "MONO", img: "https://picsum.photos/300/300?random=3" },
                             { title: "À Lôi", artist: "Double2T", img: "https://picsum.photos/300/300?random=4" },
@@ -478,13 +485,16 @@
                             container.innerHTML = "";
 
                             data.forEach((song, index) => {
+                                // Chuyển object song thành string để truyền vào function
+                                const songData = JSON.stringify(song).replace(/"/g, '&quot;');
+
                                 const songHTML = `
-        <div class="music-item"> <div class="music-card p-0 overflow-hidden position-relative border-0 h-100 shadow-sm">
+        <div class="music-item" onclick="playMusic(${songData})"> 
+            <div class="music-card p-0 overflow-hidden position-relative border-0 h-100 shadow-sm" style="cursor: pointer;">
                 ${isTrending ? `<div class="rank-badge">#${index + 1}</div>` : ''}
-                
                 <img src="${song.img}" class="img-fluid w-100" alt="${song.title}">
-                
                 <div class="card-overlay position-absolute bottom-0 start-0 w-100 p-3">
+                    <i class="bi bi-play-circle-fill fs-2 text-purple play-icon-hover"></i>
                     <h6 class="text-white mb-0 fw-bold text-truncate">${song.title}</h6>
                     <p class="text-light small mb-0 opacity-75 text-truncate">${song.artist}</p>
                 </div>
@@ -520,6 +530,162 @@
                         renderMusicSection(songs, 'music-list');
                         renderMusicSection(trendingSongs, 'trending-list', true);
                     </script>
+
+
+                    <div class="fixed-bottom bg-dark border-top border-secondary p-2 d-none" id="music-player">
+                        <div class="container-fluid">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 d-flex align-items-center gap-3">
+                                    <!-- size -->
+                                    <img id="player-img" src="" class="rounded"
+                                        style="width: 150px; height: 150px; object-fit: cover;">
+                                    <div class="overflow-hidden">
+                                        <h4 id="player-title" class="mb-0 text-white text-truncate"
+                                            style="font-size: 1.3rem;">Tên bài hát</h4>
+                                        <h5 id="player-artist" class="text-secondary text-truncate">Nghệ sĩ</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <audio id="main-audio" controls class="w-100 custom-audio-player">
+                                        <source src="" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <button class="btn btn-link text-secondary" onclick="closePlayer()"><i
+                                            class="bi bi-x-lg"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function playMusic(song) {
+                            const player = document.getElementById('music-player');
+                            const audio = document.getElementById('main-audio');
+                            const title = document.getElementById('player-title');
+                            const artist = document.getElementById('player-artist');
+                            const img = document.getElementById('player-img');
+
+                            // Hiện thanh player
+                            player.classList.remove('d-none');
+
+                            // Cập nhật thông tin
+                            title.innerText = song.title;
+                            artist.innerText = song.artist;
+                            img.src = song.img;
+
+                            // Cập nhật nguồn nhạc và chơi
+                            audio.src = song.url || "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"; // Fallback nếu thiếu link
+                            audio.play();
+                        }
+
+                        function closePlayer() {
+                            const player = document.getElementById('music-player');
+                            const audio = document.getElementById('main-audio');
+                            audio.pause();
+                            player.classList.add('d-none');
+                        }
+                    </script>
+
+
+                    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content bg-dark text-white border-secondary">
+                                <div class="modal-header border-secondary">
+                                    <h5 class="modal-title" id="uploadModalLabel">Đăng tác phẩm mới</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="uploadForm">
+                                        <div class="mb-3">
+                                            <label for="songTitle" class="form-label">Tên bài hát</label>
+                                            <input type="text" class="form-control bg-dark text-white border-secondary"
+                                                id="songTitle" required placeholder="Nhập tên bài hát...">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="songArtist" class="form-label">Nghệ sĩ / Ca sĩ</label>
+                                            <input type="text" class="form-control bg-dark text-white border-secondary"
+                                                id="songArtist" required placeholder="Nhập tên nghệ sĩ...">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="songThumbnail" class="form-label">Ảnh bìa (Thumbnail)</label>
+                                            <input type="file" class="form-control bg-dark text-white border-secondary"
+                                                id="songThumbnail" accept="image/*" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="songFile" class="form-label">File âm thanh / Video
+                                                (MP3/MP4)</label>
+                                            <input type="file" class="form-control bg-dark text-white border-secondary"
+                                                id="songFile" accept="audio/*, video/mp4" required>
+                                            <small class="text-secondary">File sẽ được đưa vào thư mục cloud_simula (Cần
+                                                backend để lưu trữ thực tế).</small>
+                                        </div>
+                                        <div class="d-grid gap-2 mt-4">
+                                            <button type="submit" class="btn btn-purple fw-bold"
+                                                style="background-color: #a224d7; color: white;">Đăng bài</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<script>
+    // 1. KHI VỪA MỞ WEB HOẶC RELOAD: Đọc dữ liệu từ localStorage
+    // Nếu chưa có dữ liệu thì gán là một mảng rỗng []
+    let myUploadedSongs = JSON.parse(localStorage.getItem('myVelodySongs')) || [];
+
+    // Nếu trong kho có bài hát, lập tức hiển thị khu vực "Nhạc của tôi"
+    if (myUploadedSongs.length > 0) {
+        document.getElementById('my-music-container').style.display = 'block';
+        renderMusicSection(myUploadedSongs, 'my-music-list');
+    }
+
+    // 2. KHI ẤN NÚT "ĐĂNG BÀI"
+    document.getElementById('uploadForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Ngăn trang reload
+
+        const title = document.getElementById('songTitle').value;
+        const artist = document.getElementById('songArtist').value;
+        
+        // Lấy thông tin file người dùng vừa chọn
+        const thumbnailFile = document.getElementById('songThumbnail').files[0];
+        const mediaFile = document.getElementById('songFile').files[0];
+
+        if (thumbnailFile && mediaFile) {
+            // Trích xuất tên file và ghép thành đường dẫn trỏ tới thư mục cloud_simula
+            const thumbPath = 'cloud_simula/' + thumbnailFile.name;
+            const mediaPath = 'cloud_simula/' + mediaFile.name;
+
+            // Tạo object bài hát mới
+            const newSong = {
+                title: title,
+                artist: artist,
+                img: thumbPath, // vd: cloud_simula/anh-bia.jpg
+                url: mediaPath  // vd: cloud_simula/video.mp4
+            };
+
+            // Thêm bài hát lên đầu danh sách
+            myUploadedSongs.unshift(newSong); 
+
+            // LƯU NGƯỢC LẠI VÀO LOCALSTORAGE ĐỂ KHÔNG BỊ MẤT KHI RELOAD
+            localStorage.setItem('myVelodySongs', JSON.stringify(myUploadedSongs));
+
+            // Hiển thị lại giao diện
+            document.getElementById('my-music-container').style.display = 'block';
+            renderMusicSection(myUploadedSongs, 'my-music-list');
+
+            // Đóng Modal và xóa trắng form
+            const modal = bootstrap.Modal.getInstance(document.getElementById('uploadModal'));
+            modal.hide();
+            this.reset();
+
+            // Nhắc nhở người dùng
+            alert('Đã lưu thông tin bài hát! Để nhạc phát được, hãy nhớ copy file thật vào thư mục cloud_simula trên máy tính của bạn nhé.');
+        }
+    });
+</script>
 
 </body>
 
