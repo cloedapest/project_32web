@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <a href="index.html" class="position-absolute top-0 start-0 m-4 text-white text-decoration-none fw-bold">
@@ -26,11 +28,13 @@
             <form>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control form-control-dark" id="email" placeholder="name@example.com">
+                    <input type="email" class="form-control form-control-dark" id="email"
+                        placeholder="name@example.com">
                 </div>
                 <div class="mb-4">
                     <label for="password" class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control form-control-dark" id="password" placeholder="Nhập mật khẩu">
+                    <input type="password" class="form-control form-control-dark" id="password"
+                        placeholder="Nhập mật khẩu">
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -60,12 +64,31 @@
             </div>
 
             <div class="text-center mt-4">
-                <p class="text-secondary small">Chưa có tài khoản? 
+                <p class="text-secondary small">Chưa có tài khoản?
                     <a href="register.html" class="text-white fw-bold text-decoration-none">Đăng ký ngay</a>
                 </p>
             </div>
         </div>
     </div>
-
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const emailLogin = document.getElementById('email').value;
+            const passwordLogin = document.getElementById('password').value;
+            const users = JSON.parse(localStorage.getItem('myVelodyUsers')) || []; //mở kho không có ai là rỗng
+            const trueUser = users.find(user => user.email === emailLogin && user.password === passwordLogin);
+            if (trueUser) {
+                alert("Đăng nhập thành công chào mừng cu " + trueUser.name + " trở về đại gia đình");
+                // Lưu lại một cái "thẻ bài" (Session) để báo cho các trang khác biết là mình đã đăng nhập
+                localStorage.setItem('currentUser', JSON.stringify(trueUser));
+                window.location.href = "index.html";
+            } else {
+                // Sai thông tin rồi, mời "nhập lại cho đúng"
+                alert("Mày là ai????");
+            }
+        });
+            
+    </script>
 </body>
+
 </html>
