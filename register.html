@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <a href="index.html" class="position-absolute top-0 start-0 m-4 text-white text-decoration-none fw-bold">
@@ -25,34 +27,71 @@
             <form>
                 <div class="mb-3">
                     <label for="name" class="form-label">Tên hiển thị</label>
-                    <input type="text" class="form-control form-control-dark" id="name" placeholder="Ví dụ: Sơn Tùng M-TP">
+                    <input type="text" class="form-control form-control-dark" id="name"
+                        placeholder="Ví dụ: Sơn Tùng M-TP">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control form-control-dark" id="email" placeholder="name@example.com">
+                    <input type="email" class="form-control form-control-dark" id="email"
+                        placeholder="name@example.com">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control form-control-dark" id="password" placeholder="Tối thiểu 8 ký tự">
+                    <input type="password" class="form-control form-control-dark" id="password"
+                        placeholder="Tối thiểu 8 ký tự">
                 </div>
-                
+
                 <div class="form-check mb-4">
                     <input class="form-check-input bg-dark border-secondary" type="checkbox" id="terms" required>
                     <label class="form-check-label text-secondary small" for="terms">
-                        Tôi đồng ý với <a href="dksd.html" class="text-brand text-decoration-none">Điều khoản dịch vụ</a> và <a href="#" class="text-brand text-decoration-none">Chính sách bảo mật</a>.
+                        Tôi đồng ý với <a href="dksd.html" class="text-brand text-decoration-none">Điều khoản dịch
+                            vụ</a> và <a href="#" class="text-brand text-decoration-none">Chính sách bảo mật</a>.
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-purple w-100 rounded-pill py-2 fw-bold shadow">Đăng ký miễn phí</button>
+                <button type="submit" class="btn btn-purple w-100 rounded-pill py-2 fw-bold shadow">Đăng ký miễn
+                    phí</button>
             </form>
 
             <div class="text-center mt-4">
-                <p class="text-secondary small">Đã có tài khoản? 
+                <p class="text-secondary small">Đã có tài khoản?
                     <a href="login.html" class="text-white fw-bold text-decoration-none">Đăng nhập</a>
                 </p>
             </div>
         </div>
     </div>
-
+    <script>
+        //chờ trang load xong mới làm việc
+        document.querySelector('form').addEventListener('submit', function (e) {
+            // Lấy dữ liệu từ các "ô cửa sổ" input
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const terms = document.getElementById('terms').checked; //đồng ý điều khoản
+            if(!terms){
+                alert("Đồng ý điều khoản cho bố");
+                return;
+            }
+            //kiểm tra email có tồn tại chưa
+            let users = JSON.parse(localStorage.getItem('myVelodyUsers')) || [];
+            const userExist = users.some(user => user.email === email);
+            if(userExist)
+            {
+                alert("Xài cái mail khác cho bố cái này có thằng xí rồi");
+                return;
+            }
+            const newUser = {
+                name: name,
+                email: email,
+                password: password //nữa băm sau
+            };
+            //lưu lại thông tin vào kho nội bộ
+            users.push(newUser);
+            localStorage.setItem('myVelodyUsers', JSON.stringify(users));
+            alert("chào mừng cu đến với hội Velody nghe nhạc vv nghen");
+            window.location.href = "login.html"; //đưa sang login
+        });
+    </script>
 </body>
+
 </html>

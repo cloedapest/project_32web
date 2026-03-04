@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
         /* FIX #3: Carousel responsive thay vì height cứng 550px */
@@ -48,13 +49,13 @@
         <!-- FIX #2: Thêm d-none d-md-flex để ẩn sidebar trên mobile -->
         <aside class="sidebar-left d-none d-md-flex flex-column p-3 vh-100 sticky-top">
             <a href="login.html">
-                <div class="user-profile-section mb-4 p-3 rounded-3 d-flex align-items-center gap-3">
+                <div id="user-profile" class="user-profile-section mb-4 p-3 rounded-3 d-flex align-items-center gap-3">
                     <div class="avatar-wrapper">
-                        <img src="https://ui-avatars.com/api/?name=Guest&background=random" alt="Avatar"
+                        <img id="user-avatar" src="avatar.png" alt="Avatar"
                             class="rounded-circle border border-2 border-purple" style="width: 45px; height: 45px;">
                     </div>
                     <div class="user-info overflow-hidden">
-                        <h6 class="text-white mb-0 text-truncate">Xin chào, Khách</h6>
+                        <h6 id="user-name-display" class="text-white mb-0 text-truncate">Xin chào, Khách</h6>
                         <small class="text-secondary">@myvelody_user</small>
                     </div>
                 </div>
@@ -118,8 +119,10 @@
                             <div class="w-100 h-100"
                                 style="background: radial-gradient(circle at center, #2862cd 0%, #000000 400%);">
                             </div>
-                            <div class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
-                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Song of the week</span>
+                            <div
+                                class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Song of the
+                                    week</span>
                                 <h2 class="display-3 fw-bold text-white mb-3">
                                     Lạ <span style="color:#2657b2">Lùng</span>
                                 </h2>
@@ -133,8 +136,10 @@
                             <div class="w-100 h-100"
                                 style="background: radial-gradient(circle at center, #720c0c 0%, #000000 400%);">
                             </div>
-                            <div class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
-                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Song of the week</span>
+                            <div
+                                class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Song of the
+                                    week</span>
                                 <h2 class="display-3 fw-bold text-white mb-3">Chạy
                                     <span style="color:#cc1d1d">Ngay Đi</span>
                                 </h2>
@@ -148,8 +153,10 @@
                             <div class="w-100 h-100"
                                 style="background: radial-gradient(circle at center, #18c145 0%, #000000 400%);">
                             </div>
-                            <div class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
-                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Song of the week</span>
+                            <div
+                                class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Song of the
+                                    week</span>
                                 <h2 class="display-3 fw-bold text-white mb-3">
                                     Sóng <span style="color:#97d412">Gió</span>
                                 </h2>
@@ -163,8 +170,10 @@
                             <div class="w-100 h-100"
                                 style="background: radial-gradient(circle at center, #181818 0%, #000000 400%);">
                             </div>
-                            <div class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
-                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Bài viết trong tuần</span>
+                            <div
+                                class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Bài viết trong
+                                    tuần</span>
                                 <h2 class="display-3 fw-bold text-white mb-3">
                                     Nghệ sĩ: <span style="color:#4b4b4b">Nghệ và Sĩ.</span>
                                 </h2>
@@ -180,13 +189,16 @@
                                 style="background: radial-gradient(circle at center, #e808f0 0%, #000000 400%);">
                             </div>
                             <a href="plan.html">
-                                <div class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
-                                    <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Khuyến mãi tốt nhất</span>
+                                <div
+                                    class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+                                    <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Khuyến mãi tốt
+                                        nhất</span>
                                     <h2 class="display-3 fw-bold text-white mb-3">
                                         Giảm giá lên đến <span style="color:#c709c4">60%</span>
                                     </h2>
                                     <!-- FIX #6: Xóa </h2> lạc bên trong <p> -->
-                                    <p class="fs-5 text-light opacity-75 mx-auto mb-5 fw-light" style="max-width: 500px;">
+                                    <p class="fs-5 text-light opacity-75 mx-auto mb-5 fw-light"
+                                        style="max-width: 500px;">
                                         Dành cho gói <span style="color:#c709c4">PLUS</span>
                                     </p>
                                 </div>
@@ -199,13 +211,16 @@
                                 style="background: radial-gradient(circle at center, gold 0%, #000000 400%);">
                             </div>
                             <a href="plan.html">
-                                <div class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
-                                    <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Gói tốt nhất dành cho người sành điệu</span>
+                                <div
+                                    class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5">
+                                    <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Gói tốt nhất dành
+                                        cho người sành điệu</span>
                                     <h2 class="display-3 fw-bold text-white mb-3">
                                         Trải nghiệm đỉnh cùng <span class="text-warning">MAX</span>
                                     </h2>
                                     <!-- FIX #6: Xóa </h2> lạc bên trong <p> -->
-                                    <p class="fs-5 text-light opacity-75 mx-auto mb-5 fw-light" style="max-width: 500px;">
+                                    <p class="fs-5 text-light opacity-75 mx-auto mb-5 fw-light"
+                                        style="max-width: 500px;">
                                         Một trải nghiệm <span class="text-warning">tuyệt đỉnh.</span>
                                     </p>
                                 </div>
@@ -220,7 +235,8 @@
                             </div>
                             <div class="carousel-caption h-100 d-flex flex-column justify-content-center align-items-center pb-5"
                                 style="position: relative; z-index: 3;">
-                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Album of the year</span>
+                                <span class="text-uppercase fw-bold text-white mb-3 tracking-wide">Album of the
+                                    year</span>
                                 <h2 class="display-3 fw-semibold mb-3">
                                     <span style="color:#ed41f9">Ái</span>
                                 </h2>
@@ -249,100 +265,106 @@
                     </div>
 
                     <!-- FIX #4: Nút header responsive, ẩn bớt trên màn nhỏ -->
-                    <div class="position-absolute top-0 end-0 p-2 p-md-4 z-3 d-flex align-items-center gap-1 gap-md-3">
+                    <div id="auth-buttons"
+                        class="position-absolute top-0 end-0 p-2 p-md-4 z-3 d-flex align-items-center gap-1 gap-md-3">
                         <a href="login.html" class="btn btn-hero-outline rounded-pill px-2 px-md-4 btn-sm fw-bold">
                             Đăng nhập
                         </a>
-                        <a href="register.html" class="btn btn-hero-outline rounded-pill px-2 px-md-4 btn-sm fw-bold d-none d-sm-inline">
+                        <a href="register.html"
+                            class="btn btn-hero-outline rounded-pill px-2 px-md-4 btn-sm fw-bold d-none d-sm-inline">
                             Đăng ký
                         </a>
-                        <a href="register.html" class="btn btn-hero-outline rounded-pill px-2 px-md-4 btn-sm fw-bold d-none d-md-inline">
+                        <a href="register.html"
+                            class="btn btn-hero-outline rounded-pill px-2 px-md-4 btn-sm fw-bold d-none d-md-inline">
                             Đăng nhạc
                         </a>
                     </div>
+                </div>
 
-                </div><!-- end #pricingIntroCarousel -->
+            </div><!-- end #pricingIntroCarousel -->
 
-                <!-- Thanh tìm kiếm -->
-                <div id="main-nav-wrapper">
-                    <div id="main-nav" class="py-4 transition-all">
-                        <div class="container">
-                            <div class="row align-items-center justify-content-center" id="nav-row">
-                                <div class="col-md-8 col-12 transition-all" id="search-col">
-                                    <div class="search-box position-relative">
-                                        <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
-                                        <input type="text" id="searchInput"
-                                            class="text-white bg-dark form-control search-input ps-5 py-3 shadow-none border-0"
-                                            placeholder="Bạn muốn nghe gì? (Tên bài hát, nghệ sĩ...)">
-                                    </div>
+            <!-- Thanh tìm kiếm -->
+            <div id="main-nav-wrapper">
+                <div id="main-nav" class="py-4 transition-all">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center" id="nav-row">
+                            <div class="col-md-8 col-12 transition-all" id="search-col">
+                                <div class="search-box position-relative">
+                                    <i
+                                        class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+                                    <input type="text" id="searchInput"
+                                        class="text-white bg-dark form-control search-input ps-5 py-3 shadow-none border-0"
+                                        placeholder="Bạn muốn nghe gì? (Tên bài hát, nghệ sĩ...)">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Nhạc của tôi -->
-                <div class="container mt-4" id="my-music-container" style="display: none;">
-                    <h2 class="text-white mb-4"><i class="bi bi-person-lines-fill text-purple me-2"></i>Nhạc của tôi</h2>
-                    <div id="my-music-list" class="scroll-container"></div>
+            <!-- Nhạc của tôi -->
+            <div class="container mt-4" id="my-music-container" style="display: none;">
+                <h2 class="text-white mb-4"><i class="bi bi-person-lines-fill text-purple me-2"></i>Nhạc của tôi
+                </h2>
+                <div id="my-music-list" class="scroll-container"></div>
+            </div>
+
+            <!-- Dành cho bạn -->
+            <div class="container mt-5">
+                <h2 class="text-white mb-4">Dành cho bạn</h2>
+                <div id="music-list" class="scroll-container"></div>
+            </div>
+
+            <!-- Trending -->
+            <div class="container mt-5">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="text-white"><i class="bi bi-fire text-warning me-2"></i>Bảng xếp hạng Trending</h2>
+                    <a href="#" class="text-secondary text-decoration-none small">Xem tất cả</a>
                 </div>
+                <div id="trending-list" class="scroll-container"></div>
+            </div>
 
-                <!-- Dành cho bạn -->
-                <div class="container mt-5">
-                    <h2 class="text-white mb-4">Dành cho bạn</h2>
-                    <div id="music-list" class="scroll-container"></div>
-                </div>
+            <!-- Nghệ sĩ -->
+            <div class="container mt-5">
+                <h3 class="mb-4">Nghệ sĩ trên nền tảng</h3>
+                <div id="artist-list" class="scroll-container"></div>
+            </div>
 
-                <!-- Trending -->
-                <div class="container mt-5">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2 class="text-white"><i class="bi bi-fire text-warning me-2"></i>Bảng xếp hạng Trending</h2>
-                        <a href="#" class="text-secondary text-decoration-none small">Xem tất cả</a>
-                    </div>
-                    <div id="trending-list" class="scroll-container"></div>
-                </div>
-
-                <!-- Nghệ sĩ -->
-                <div class="container mt-5">
-                    <h3 class="mb-4">Nghệ sĩ trên nền tảng</h3>
-                    <div id="artist-list" class="scroll-container"></div>
-                </div>
-
-                <!-- Footer -->
-                <footer class="custom-footer pt-5 pb-4 mt-5">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4 mb-4">
-                                <h5 class="text-white fw-bold mb-3">MyVelody</h5>
-                                <p class="text-secondary small">Mạng xã hội âm nhạc kết nối mọi người.</p>
-                            </div>
-                            <div class="col-md-2 col-6 mb-4">
-                                <h6 class="text-white fw-bold mb-3">Sản phẩm</h6>
-                                <ul class="list-unstyled">
-                                    <li><a href="#" class="footer-link">Music App</a></li>
-                                    <li><a href="#" class="footer-link">Gói Premium</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-2 col-6 mb-4">
-                                <h6 class="text-white fw-bold mb-3">Công ty</h6>
-                                <ul class="list-unstyled">
-                                    <li><a href="aboutus.html" class="footer-link">Về chúng tôi</a></li>
-                                    <li><a href="#" class="footer-link">Liên hệ</a></li>
-                                </ul>
-                            </div>
+            <!-- Footer -->
+            <footer class="custom-footer pt-5 pb-4 mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <h5 class="text-white fw-bold mb-3">MyVelody</h5>
+                            <p class="text-secondary small">Mạng xã hội âm nhạc kết nối mọi người.</p>
                         </div>
-                        <hr class="footer-divider border-secondary">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <p class="text-secondary small mb-0">© 2026 MyVelody. All rights reserved.</p>
-                            </div>
+                        <div class="col-md-2 col-6 mb-4">
+                            <h6 class="text-white fw-bold mb-3">Sản phẩm</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="footer-link">Music App</a></li>
+                                <li><a href="#" class="footer-link">Gói Premium</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-6 mb-4">
+                            <h6 class="text-white fw-bold mb-3">Công ty</h6>
+                            <ul class="list-unstyled">
+                                <li><a href="aboutus.html" class="footer-link">Về chúng tôi</a></li>
+                                <li><a href="#" class="footer-link">Liên hệ</a></li>
+                            </ul>
                         </div>
                     </div>
-                </footer>
+                    <hr class="footer-divider border-secondary">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="text-secondary small mb-0">© 2026 MyVelody. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
 
-            </div><!-- end .container -->
+    </div><!-- end .container -->
 
-        </main>
+    </main>
     </div><!-- end .d-flex -->
 
 
@@ -351,9 +373,11 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-4 col-md-3 d-flex align-items-center gap-2">
-                    <img id="player-img" src="" class="rounded" style="width: 45px; height: 45px; object-fit: cover; flex-shrink: 0;">
+                    <img id="player-img" src="" class="rounded"
+                        style="width: 45px; height: 45px; object-fit: cover; flex-shrink: 0;">
                     <div class="overflow-hidden d-none d-md-block">
-                        <h6 id="player-title" class="mb-0 text-white text-truncate" style="font-size: 0.95rem;">Tên bài hát</h6>
+                        <h6 id="player-title" class="mb-0 text-white text-truncate" style="font-size: 0.95rem;">Tên bài
+                            hát</h6>
                         <small id="player-artist" class="text-secondary text-truncate d-block">Nghệ sĩ</small>
                     </div>
                 </div>
@@ -410,13 +434,13 @@
                     <form id="uploadForm">
                         <div class="mb-3">
                             <label for="songTitle" class="form-label">Tên bài hát</label>
-                            <input type="text" class="form-control bg-dark text-white border-secondary"
-                                id="songTitle" required placeholder="Nhập tên bài hát...">
+                            <input type="text" class="form-control bg-dark text-white border-secondary" id="songTitle"
+                                required placeholder="Nhập tên bài hát...">
                         </div>
                         <div class="mb-3">
                             <label for="songArtist" class="form-label">Nghệ sĩ / Ca sĩ</label>
-                            <input type="text" class="form-control bg-dark text-white border-secondary"
-                                id="songArtist" required placeholder="Nhập tên nghệ sĩ...">
+                            <input type="text" class="form-control bg-dark text-white border-secondary" id="songArtist"
+                                required placeholder="Nhập tên nghệ sĩ...">
                         </div>
                         <div class="mb-3">
                             <label for="songThumbnail" class="form-label">Ảnh bìa (Thumbnail)</label>
@@ -425,9 +449,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="songFile" class="form-label">File âm thanh / Video (MP3/MP4)</label>
-                            <input type="file" class="form-control bg-dark text-white border-secondary"
-                                id="songFile" accept="audio/*, video/mp4" required>
-                            <small class="text-secondary">File sẽ được đưa vào thư mục cloud_simula (Cần backend để lưu trữ thực tế).</small>
+                            <input type="file" class="form-control bg-dark text-white border-secondary" id="songFile"
+                                accept="audio/*, video/mp4" required>
+                            <small class="text-secondary">File sẽ được đưa vào thư mục cloud_simula (Cần backend để lưu
+                                trữ thực tế).</small>
                         </div>
                         <div class="d-grid gap-2 mt-4">
                             <button type="submit" class="btn btn-purple fw-bold"
@@ -642,6 +667,32 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));//lấy người hiện tại
+            const userName = document.getElementById('userName');
+            const authButtons = document.getElementById('auth-buttons');
+            const userAvatar = document.getElementById('user-avatar');
+            if (currentUser) {
+                userName.innerText = "Xin chào" + currentUser.name;
+                userAvatar.src = "avatar.png";
+                if (authButtons) { //tắt cái nút đăng kí đăng nhập
+                    authButtons.style.display = 'none';
+                }
+                // Thêm một nút "Đăng xuất" 
+                const logoutBtn = document.createElement('a');
+                logoutBtn.href = "#";
+                logoutBtn.className = "nav-link text-danger small mt-2";
+                logoutBtn.innerHTML = '<i class="bi bi-box-arrow-right"></i> Đăng xuất';
+                logoutBtn.onclick = function () {
+                    localStorage.removeItem('currentUser'); // Xóa thẻ bài
+                    window.location.reload(); // Load lại trang để trở về trạng thái "Khách"
+                };
+                document.querySelector('.sidebar-left').appendChild(logoutBtn);
+            }
+        });
+    </script>
 
 </body>
+
 </html>
